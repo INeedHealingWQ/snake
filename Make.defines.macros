@@ -1,0 +1,8 @@
+CC=gcc
+AR=ar
+AS=as
+CFLAGS= -I$(ROOT)/include -Wall $(EXTRA)
+LDDIR=-L$(ROOT)/lib
+LDLIBS=$(LDDIR) -lq $(EXTRALIBS)
+LIBQ=$(ROOT)/lib/libq.a
+TEMPFILES=core core.* *.o temp.* *.out

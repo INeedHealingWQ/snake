@@ -1,0 +1,2257 @@
+cscope 15 $HOME/Documents/snake               0000010044
+	@snake.c
+
+1 
+	~<g¿ph_lib.h
+>
+
+3 
+	#GLOBAL_THICK
+ 2
+
+	)
+
+4 
+	#BACK_GROUND_COLOR
+ 0x00000000
+
+	)
+
+5 
+	#SNAKE_BODY_COLOR
+ 0xFFFFFFFF
+
+	)
+
+6 
+	#NUM_INFL
+ 50
+
+	)
+
+7 
+fb_v¬_sü“nšfo
+ 
+všfo
+;
+
+8 
+fb_fix_sü“nšfo
+ 
+fšfo
+;
+
+9 
+ev’t_fd
+;
+
+10 
+u£cÚds_t
+ 
+	g£c
+ = 100000;
+
+11 
+	gmax_x
+;
+
+12 
+	gmax_y
+;
+
+15 
+	m¡Ý
+ = 0,
+
+16 
+	mlow_¥“d
+,
+
+17 
+	mmid_¥“d
+,
+
+18 
+	mhigh_¥“d
+,
+
+19 } 
+	g¥“d
+;
+
+21 
+	edœt
+ {
+
+22 
+	mnÚe
+ = -1,
+
+23 
+	mup
+,
+
+24 
+	mdown
+,
+
+25 
+	mËá
+,
+
+26 
+	mright
+,
+
+27 } 
+	gdœt
+;
+
+29 
+	sšæ
+ {
+
+30 
+POINT
+ 
+	mšæ_posi
+;
+
+31 
+dœt
+ 
+	mdœt
+;
+
+34 
+	s¢ake
+ {
+
+35 
+POINT
+ 
+	mh—d
+;
+
+36 
+POINT
+ 
+	mž
+;
+
+37 
+šæ
+ *
+	mšæ
+;
+
+38 
+ušt32_t
+ 
+	mn_šæ
+;
+
+39 
+ušt32_t
+ 
+	midx_šæ
+;
+
+40 
+ušt32_t
+ 
+	m¥“d
+;
+
+41 
+dœt
+ 
+	mh_dœt
+;
+
+42 
+dœt
+ 
+	mt_dœt
+;
+
+43 
+ušt32_t
+ 
+	mËngth
+;
+
+44 
+	m¡©e_æag
+;
+
+45 
+±h»ad_mu‹x_t
+ 
+	ms_lock
+;
+
+46 } *
+	gp¢ake
+;
+
+48 
+	sfood
+ {
+
+49 
+POINT
+ 
+	mposi
+;
+
+50 } 
+	gfood
+;
+
+52 
+	$dump_¢ake_šfo
+(
+¢ake
+ *
+¢
+) {
+
+53 
+	`årštf
+(
+¡dout
+, "snake info:\n"
+
+56 
+¢
+->
+h—d
+.
+x
+, sn->h—d.
+y
+, sn->
+ž
+.x, sn->tail.y);
+
+57 
+	}
+}
+
+59 
+	$š™_¢ake
+() {
+
+60 
+šæ
+ *infl;
+
+61 
+RECT
+ 
+body
+;
+
+62 
+p¢ake
+ = (
+¢ake
+ *)
+	`m®loc
+((snake));
+
+63 ià(
+p¢ake
+ =ð
+NULL
+) {
+
+64 
+	`årštf
+(
+¡d”r
+, "Error: failedo malloc snake!\n");
+
+65 
+	`fæush
+(
+¡d”r
+);
+
+66 
+	`ex™
+ (
+EXIT_FAILURE
+);
+
+68 
+šæ
+ = (šæ *è
+	`m®loc
+ ((šæè* 
+NUM_INFL
+);
+
+69 ià(
+šæ
+ =ð
+NULL
+) {
+
+70 
+	`årštf
+(
+¡d”r
+, "Error: failedo malloc POINT!\n");
+
+71 
+	`fæush
+(
+¡d”r
+);
+
+72 
+	`ex™
+ (
+EXIT_FAILURE
+);
+
+74 
+p¢ake
+->
+h—d
+.
+x
+ = (
+všfo
+.
+x»s
+ / (2 * 
+GLOBAL_THICK
+ + 1) / 2) * (2 * GLOBAL_THICK + 1) + GLOBAL_THICK;
+
+75 
+p¢ake
+->
+ž
+.
+x
+ =…¢ake->
+h—d
+.x;
+
+76 
+p¢ake
+->
+h—d
+.
+y
+ = (
+všfo
+.
+y»s
+ / (2 * 
+GLOBAL_THICK
+ + 1) / 2) * (2 * GLOBAL_THICK + 1) + GLOBAL_THICK;
+
+77 
+p¢ake
+->
+ž
+.
+y
+ =…¢ake->
+h—d
+.y + 3 * (2 * 
+GLOBAL_THICK
+ + 1);
+
+78 
+p¢ake
+->
+h—d
+.
+thickÃss
+ = 
+GLOBAL_THICK
+;
+
+79 
+p¢ake
+->
+ž
+.
+thickÃss
+ = 
+GLOBAL_THICK
+;
+
+80 
+p¢ake
+->
+šæ
+ = infl;
+
+81 
+p¢ake
+->
+n_šæ
+ = 0;
+
+82 
+p¢ake
+->
+idx_šæ
+ = 0;
+
+83 
+p¢ake
+->
+¥“d
+ = 
+low_¥“d
+;
+
+84 
+p¢ake
+->
+h_dœt
+ = 
+up
+;
+
+85 
+p¢ake
+->
+t_dœt
+ = 
+up
+;
+
+86 
+p¢ake
+->
+Ëngth
+ = 30;
+
+87 
+p¢ake
+->
+¡©e_æag
+ = 0;
+
+89 ià(
+	`±h»ad_mu‹x_š™
+(&
+p¢ake
+->
+s_lock
+, 
+NULL
+) != 0)
+
+90 
+çž_š™_mu‹x
+;
+
+92 
+body
+.
+x0
+ = 
+p¢ake
+->
+h—d
+.
+x
+,
+
+93 
+body
+.
+y0
+ = 
+p¢ake
+->
+h—d
+.
+y
+,
+
+94 
+body
+.
+x1
+ = 
+p¢ake
+->
+ž
+.
+x
+,
+
+95 
+body
+.
+y1
+ = 
+p¢ake
+->
+ž
+.
+y
+,
+
+96 
+body
+.
+thickÃss
+ = 
+GLOBAL_THICK
+,
+
+98 
+	`nÜm®_lše
+(&
+body
+, 
+SNAKE_BODY_COLOR
+);
+
+99 
+	`årštf
+(
+¡dout
+, "Info: snake successfully created!\n");
+
+102 
+çž_š™_mu‹x
+:
+
+103 
+	`årštf
+(
+¡d”r
+, "failedo init mutex\n");
+
+104 
+	`ä“
+(
+p¢ake
+->
+šæ
+);
+
+105 
+	`ä“
+(
+p¢ake
+);
+
+106 
+	`ex™
+(
+EXIT_FAILURE
+);
+
+107 
+	}
+}
+
+109 
+	$kžl_¢ake
+(
+¢ake
+ *
+¢
+) {
+
+110 
+	`ä“
+(
+¢
+->
+šæ
+);
+
+111 
+	`ä“
+(
+¢
+);
+
+113 
+	}
+}
+
+115 
+	$game_ov”
+() {
+
+116 
+	`årštf
+(
+¡dout
+, "Info: Game Over!\n");
+
+117 
+	`£t_background
+(
+BACK_GROUND_COLOR
+);
+
+119 
+	}
+}
+
+121 
+	$ÿtch_food
+(cÚ¡ 
+POINT
+ *
+tmp
+, cÚ¡ 
+food
+ *
+fd
+) {
+
+122  (
+tmp
+->
+x
+ =ð
+fd
+->
+posi
+.x
+
+123 && 
+tmp
+->
+y
+ =ð
+fd
+->
+posi
+.y);
+
+124 
+	}
+}
+
+126 
+	$üash
+(cÚ¡ 
+POINT
+ *
+tmp
+) {
+
+127 
+	`årštf
+(
+¡dout
+, "tmp.x = %u,mp.y = %u, color = 0x%X "
+
+128 "BACKG_GROUND_COLOR = 0x%X\n", 
+tmp
+->
+x
+,mp->
+y
+, 
+	`g‘_cÞÜ
+Ñmp), 
+BACK_GROUND_COLOR
+);
+
+129  ( 
+	`g‘_cÞÜ
+(
+tmp
+è!ð
+BACK_GROUND_COLOR
+ );
+
+130 
+	}
+}
+
+133 
+	$cÜ»ù_ž_dœt
+(
+¢ake
+ *
+¢
+) {
+
+134 
+i
+;
+
+135 ià(
+¢
+->
+n_šæ
+ != 0 &&
+
+136 (
+¢
+->
+šæ
+[¢->
+idx_šæ
+].
+šæ_posi
+.
+x
+ =ð¢->
+ž
+.x
+
+137 && 
+¢
+->
+šæ
+[¢->
+idx_šæ
+].
+šæ_posi
+.
+y
+ =ð¢->
+ž
+.y))
+
+139 
+¢
+->
+t_dœt
+ = sn->
+šæ
+[¢->
+idx_šæ
+].
+dœt
+;
+
+140 
+¢
+->
+n_šæ
+ --;
+
+141 
+¢
+->
+idx_šæ
+ ++;
+
+142 ià(
+¢
+->
+n_šæ
+ + 10 <ð
+NUM_INFL
+) {
+
+143 
+i
+ = 0; i < 
+¢
+->
+n_šæ
+; i++, sn->
+idx_šæ
+++)
+
+144 
+¢
+->
+šæ
+[
+i
+] = sn->šæ[¢->
+idx_šæ
+];
+
+145 
+¢
+->
+idx_šæ
+ = 0;
+
+148 
+	}
+}
+
+150 
+	$¿nd_food
+() {
+
+151 
+f_x
+, 
+f_y
+;
+
+153 
+f_x
+ = 
+	`¿nd
+(è% 
+max_x
+;
+
+154 
+f_y
+ = 
+	`¿nd
+(è% 
+max_y
+;
+
+155 
+food
+.
+posi
+.
+x
+ = 
+f_x
+ * (2 * 
+GLOBAL_THICK
+ + 1) + GLOBAL_THICK;
+
+156 
+food
+.
+posi
+.
+y
+ = 
+f_y
+ * (2 * 
+GLOBAL_THICK
+ + 1) + GLOBAL_THICK;
+
+157 } 
+	`g‘_cÞÜ
+(&
+food
+.
+posi
+è!ð
+BACK_GROUND_COLOR
+);
+
+158 
+food
+.
+posi
+.
+thickÃss
+ = 
+GLOBAL_THICK
+;
+
+159 
+	`nÜm®_pošt
+(&
+food
+.
+posi
+, 
+SNAKE_BODY_COLOR
+);
+
+160 
+	}
+}
+
+162 
+	$¡•_´oc
+(
+¢ake
+ *
+¢
+) {
+
+163 
+POINT
+ 
+tmp
+;
+
+164 
+ušt32_t
+ 
+çù
+ = 2 * 
+GLOBAL_THICK
+ + 1;
+
+165 
+grow
+ = 0;
+
+167 
+	`u¦“p
+(
+£c
+);
+
+168 
+	`±h»ad_mu‹x_lock
+(&
+¢
+->
+s_lock
+);
+
+169 
+¢
+->
+h_dœt
+) {
+
+170 
+up
+:
+
+171 
+tmp
+.
+x
+ = 
+¢
+->
+h—d
+.x;
+
+172 
+tmp
+.
+y
+ = 
+¢
+->
+h—d
+.y - 
+çù
+;
+
+173 
+tmp
+.
+thickÃss
+ = 
+GLOBAL_THICK
+;
+
+174 
+	`dump_¢ake_šfo
+(
+¢
+);
+
+175 ià(
+	`ÿtch_food
+(&
+tmp
+, &
+food
+))
+
+177 
+¢
+->
+h—d
+.
+x
+ = 
+food
+.
+posi
+.x;
+
+178 
+¢
+->
+h—d
+.
+y
+ = 
+food
+.
+posi
+.y;
+
+179 
+¢
+->
+Ëngth
+++;
+
+180 
+	`¿nd_food
+();
+
+181 
+grow
+ = 1;
+
+183 } ià(
+¢
+->
+h—d
+.
+y
+ < 
+GLOBAL_THICK
+ + 
+çù
+
+
+184 || 
+	`üash
+(&
+tmp
+)) {
+
+185 
+	`game_ov”
+();
+
+188 
+	`nÜm®_pošt
+(&
+tmp
+, 
+SNAKE_BODY_COLOR
+);
+
+189 
+¢
+->
+h—d
+.
+x
+ = 
+tmp
+.x;
+
+190 
+¢
+->
+h—d
+.
+y
+ = 
+tmp
+.y;
+
+192 
+down
+:
+
+193 
+tmp
+.
+x
+ = 
+¢
+->
+h—d
+.x;
+
+194 
+tmp
+.
+y
+ = 
+¢
+->
+h—d
+.y + 
+çù
+;
+
+195 
+tmp
+.
+thickÃss
+ = 
+GLOBAL_THICK
+;
+
+196 
+	`dump_¢ake_šfo
+(
+¢
+);
+
+197 ià(
+	`ÿtch_food
+(&
+tmp
+, &
+food
+))
+
+199 
+¢
+->
+h—d
+.
+x
+ = 
+food
+.
+posi
+.x;
+
+200 
+¢
+->
+h—d
+.
+y
+ = 
+food
+.
+posi
+.y;
+
+201 
+¢
+->
+Ëngth
+ ++;
+
+202 
+	`¿nd_food
+();
+
+203 
+grow
+ = 1;
+
+205 } ià(
+¢
+->
+h—d
+.
+y
+ > 
+všfo
+.
+y»s
+ - 1 -
+
+206 
+GLOBAL_THICK
+ - 
+çù
+ || 
+	`üash
+(&
+tmp
+)) {
+
+207 
+	`game_ov”
+();
+
+210 
+	`nÜm®_pošt
+(&
+tmp
+, 
+SNAKE_BODY_COLOR
+);
+
+211 
+¢
+->
+h—d
+.
+x
+ = 
+tmp
+.x;
+
+212 
+¢
+->
+h—d
+.
+y
+ = 
+tmp
+.y;
+
+214 
+Ëá
+:
+
+215 
+tmp
+.
+x
+ = 
+¢
+->
+h—d
+.x - 
+çù
+;
+
+216 
+tmp
+.
+y
+ = 
+¢
+->
+h—d
+.y;
+
+217 
+tmp
+.
+thickÃss
+ = 
+GLOBAL_THICK
+;
+
+218 
+	`dump_¢ake_šfo
+(
+¢
+);
+
+219 ià(
+	`ÿtch_food
+(&
+tmp
+, &
+food
+))
+
+221 
+¢
+->
+h—d
+.
+x
+ = 
+food
+.
+posi
+.x;
+
+222 
+¢
+->
+h—d
+.
+y
+ = 
+food
+.
+posi
+.y;
+
+223 
+¢
+->
+Ëngth
+ ++;
+
+224 
+	`¿nd_food
+();
+
+225 
+grow
+ = 1;
+
+227 } ià(
+¢
+->
+h—d
+.
+x
+ < 
+GLOBAL_THICK
+ + 
+çù
+
+
+228 || 
+	`üash
+(&
+tmp
+)) {
+
+229 
+	`game_ov”
+();
+
+232 
+	`nÜm®_pošt
+(&
+tmp
+, 
+SNAKE_BODY_COLOR
+);
+
+233 
+¢
+->
+h—d
+.
+x
+ = 
+tmp
+.x;
+
+234 
+¢
+->
+h—d
+.
+y
+ = 
+tmp
+.y;
+
+236 
+right
+:
+
+237 
+tmp
+.
+x
+ = 
+¢
+->
+h—d
+.x + 
+çù
+;
+
+238 
+tmp
+.
+y
+ = 
+¢
+->
+h—d
+.y;
+
+239 
+tmp
+.
+thickÃss
+ = 
+GLOBAL_THICK
+;
+
+240 
+	`dump_¢ake_šfo
+(
+¢
+);
+
+241 ià(
+	`ÿtch_food
+(&
+tmp
+, &
+food
+))
+
+243 
+¢
+->
+h—d
+.
+x
+ = 
+food
+.
+posi
+.x;
+
+244 
+¢
+->
+h—d
+.
+y
+ = 
+food
+.
+posi
+.y;
+
+245 
+¢
+->
+Ëngth
+++;
+
+246 
+	`¿nd_food
+();
+
+247 
+grow
+ = 1;
+
+249 } ià(
+¢
+->
+h—d
+.
+x
+ > 
+všfo
+.
+x»s
+ - 1 -
+
+250 
+GLOBAL_THICK
+ - 
+çù
+ || 
+	`üash
+(&
+tmp
+)) {
+
+251 
+	`game_ov”
+();
+
+254 
+	`nÜm®_pošt
+(&
+tmp
+, 
+SNAKE_BODY_COLOR
+);
+
+255 
+¢
+->
+h—d
+.
+x
+ = 
+tmp
+.x;
+
+256 
+¢
+->
+h—d
+.
+y
+ = 
+tmp
+.y;
+
+261 ià(
+grow
+) {
+
+262 
+grow
+ = 0;
+
+263 
+Ãxt
+;
+
+265 
+¢
+->
+t_dœt
+) {
+
+266 
+up
+:
+
+267 
+	`årštf
+(
+¡dout
+, "tail up.\n");
+
+268 
+	`nÜm®_pošt
+(&(
+¢
+->
+ž
+), 
+BACK_GROUND_COLOR
+);
+
+269 
+¢
+->
+ž
+.
+y
+ -ð
+çù
+;
+
+271 
+down
+:
+
+272 
+	`nÜm®_pošt
+(&(
+¢
+->
+ž
+), 
+BACK_GROUND_COLOR
+);
+
+273 
+¢
+->
+ž
+.
+y
+ +ð
+çù
+;
+
+275 
+Ëá
+:
+
+276 
+	`nÜm®_pošt
+(&(
+¢
+->
+ž
+), 
+BACK_GROUND_COLOR
+);
+
+277 
+¢
+->
+ž
+.
+x
+ -ð
+çù
+;
+
+279 
+right
+:
+
+280 
+	`nÜm®_pošt
+(&(
+¢
+->
+ž
+), 
+BACK_GROUND_COLOR
+);
+
+281 
+¢
+->
+ž
+.
+x
+ +ð
+çù
+;
+
+286 
+¢
+->
+¡©e_æag
+ = 1;
+
+287 
+	`cÜ»ù_ž_dœt
+(
+¢
+);
+
+288 
+Ãxt
+:
+
+289 
+	`±h»ad_mu‹x_uÆock
+(&
+¢
+->
+s_lock
+);
+
+292 
+	}
+}
+
+294 
+	$add_šæ
+(
+¢ake
+ *
+¢
+, 
+šæ
+ *
+iæ
+)
+
+296 ià(
+¢
+->
+n_šæ
+ + 10 >ð
+NUM_INFL
+) {
+
+297 
+¢
+->
+šæ
+ = (šæ*)
+	`»®loc
+(sn->infl,
+
+298 (
+šæ
+è* (
+NUM_INFL
+ + 10));
+
+300 
+	`memýy
+(&
+¢
+->
+šæ
+[¢->
+n_šæ
+ + sn->
+idx_šæ
+], 
+iæ
+, (infl));
+
+301 
+¢
+->
+n_šæ
+++;
+
+302 
+	}
+}
+
+304 *
+	$g‘_key
+(*
+¬g
+) {
+
+305 
+rc
+;
+
+306 
+šput_ev’t
+ 
+ev’t
+;
+
+307 
+¢ake
+ *
+¢
+ = (¢ak*)
+¬g
+;
+
+308 
+šæ
+ 
+iæ
+;
+
+309 (
+rc
+ = 
+	`»ad
+(
+ev’t_fd
+, &
+ev’t
+,
+
+310 (
+šput_ev’t
+))) > 0) {
+
+311 
+ev’t
+.
+ty³
+) {
+
+312 
+EV_KEY
+:
+
+313 
+ev’t
+.
+code
+) {
+
+314 
+KEY_UP
+:
+
+315 ià(
+ev’t
+.
+v®ue
+) {
+
+316 
+	`årštf
+(
+¡dout
+, "detected key up\n");
+
+317 ià(
+¢
+->
+h_dœt
+ !ð
+up
+ && sn->h_dœˆ!ð
+down
+
+
+318 && 
+¢
+->
+¡©e_æag
+) {
+
+319 
+	`±h»ad_mu‹x_lock
+(&
+¢
+->
+s_lock
+);
+
+320 
+¢
+->
+h_dœt
+ = 
+up
+;
+
+321 
+iæ
+.
+šæ_posi
+ = 
+¢
+->
+h—d
+;
+
+322 
+iæ
+.
+dœt
+ = 
+up
+;
+
+323 
+	`add_šæ
+(
+¢
+, &
+iæ
+);
+
+324 
+	`±h»ad_mu‹x_uÆock
+(&
+¢
+->
+s_lock
+);
+
+325 
+¢
+->
+¡©e_æag
+ = 0;
+
+329 
+KEY_DOWN
+:
+
+330 ià(
+ev’t
+.
+v®ue
+) {
+
+332 
+	`årštf
+(
+¡dout
+, "detected key down\n");
+
+333 ià(
+¢
+->
+h_dœt
+ !ð
+up
+ && sn->h_dœˆ!ð
+down
+
+
+334 && 
+¢
+->
+¡©e_æag
+) {
+
+335 
+	`±h»ad_mu‹x_lock
+(&
+¢
+->
+s_lock
+);
+
+336 
+¢
+->
+h_dœt
+ = 
+down
+;
+
+337 
+iæ
+.
+šæ_posi
+ = 
+¢
+->
+h—d
+;
+
+338 
+iæ
+.
+dœt
+ = 
+down
+;
+
+339 
+	`add_šæ
+(
+¢
+, &
+iæ
+);
+
+340 
+	`±h»ad_mu‹x_uÆock
+(&
+¢
+->
+s_lock
+);
+
+341 
+¢
+->
+¡©e_æag
+ = 0;
+
+345 
+KEY_LEFT
+:
+
+346 ià(
+ev’t
+.
+v®ue
+) {
+
+347 
+	`årštf
+(
+¡dout
+, "detected key†eft\n");
+
+348 ià(
+¢
+->
+h_dœt
+ !ð
+Ëá
+ && sn->h_dœˆ!ð
+right
+
+
+349 && 
+¢
+->
+¡©e_æag
+)
+
+351 
+	`±h»ad_mu‹x_lock
+(&
+¢
+->
+s_lock
+);
+
+352 
+¢
+->
+h_dœt
+ = 
+Ëá
+;
+
+353 
+iæ
+.
+šæ_posi
+ = 
+¢
+->
+h—d
+;
+
+354 
+iæ
+.
+dœt
+ = 
+Ëá
+;
+
+355 
+	`add_šæ
+(
+¢
+, &
+iæ
+);
+
+356 
+	`±h»ad_mu‹x_uÆock
+(&
+¢
+->
+s_lock
+);
+
+357 
+¢
+->
+¡©e_æag
+ = 0;
+
+361 
+KEY_RIGHT
+:
+
+362 ià(
+ev’t
+.
+v®ue
+) {
+
+364 
+	`årštf
+(
+¡dout
+, "detected key„ight\n");
+
+365 ià(
+¢
+->
+h_dœt
+ !ð
+Ëá
+ && sn->h_dœˆ!ð
+right
+
+
+366 && 
+¢
+->
+¡©e_æag
+)
+
+368 
+	`±h»ad_mu‹x_lock
+(&
+¢
+->
+s_lock
+);
+
+369 
+¢
+->
+h_dœt
+ = 
+right
+;
+
+370 
+iæ
+.
+šæ_posi
+ = 
+¢
+->
+h—d
+;
+
+371 
+iæ
+.
+dœt
+ = 
+right
+;
+
+372 
+	`add_šæ
+(
+¢
+, &
+iæ
+);
+
+373 
+	`±h»ad_mu‹x_uÆock
+(&
+¢
+->
+s_lock
+);
+
+374 
+¢
+->
+¡©e_æag
+ = 0;
+
+386  
+NULL
+;
+
+387 
+	}
+}
+
+389 
+	#hªdË_”rÜ_’
+(
+’
+, 
+msg
+) \
+
+390 dØ{ 
+”ºo
+ = 
+’
+; 
+	`³¼Ü
+(
+msg
+); 
+	`ex™
+(
+EXIT_FAILURE
+); } 0)
+
+	)
+
+392 
+	$maš
+(
+¬gc
+, *
+¬gv
+[]) {
+
+393 
+s
+;
+
+394 
+±h»ad_t
+ 
+th
+;
+
+395 
+	`š™_·Ë‰e
+(
+¬gc
+, 
+¬gv
+);
+
+396 
+	`£t_background
+(
+BACK_GROUND_COLOR
+);
+
+397 
+	`š™_¢ake
+();
+
+398 
+max_x
+ = 
+všfo
+.
+x»s
+ / (2 * 
+GLOBAL_THICK
+ + 1);
+
+399 
+max_y
+ = 
+všfo
+.
+y»s
+ / (2 * 
+GLOBAL_THICK
+ + 1);
+
+400 
+	`¤ªd
+(
+	`time
+(
+NULL
+));
+
+401 
+s
+ = 
+	`±h»ad_ü—‹
+(&
+th
+, 
+NULL
+, 
+g‘_key
+, (*)
+p¢ake
+);
+
+402 ià(
+s
+ != 0)
+
+403 
+	`hªdË_”rÜ_’
+(
+s
+, "pthread createƒrror");
+
+404 
+	`¿nd_food
+();
+
+405 
+	`nÜm®_pošt
+(&
+food
+.
+posi
+, 
+SNAKE_BODY_COLOR
+);
+
+406 
+	`¡•_´oc
+(
+p¢ake
+);
+
+407 
+	`kžl_¢ake
+(
+p¢ake
+);
+
+408 
+	`ex™_·Ë‰e
+();
+
+409 
+	`fæush
+(
+¡dout
+);
+
+411 
+	}
+}
+
+	@
+1
+.
+1
+/usr/include
+1
+8
+snake.c

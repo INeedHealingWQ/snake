@@ -1,0 +1,8 @@
+CC=arm-none-linux-gnueabi-gcc
+AR=arm-none-linux-gnueabi-ar
+AS=arm-none-linux-gnueabi-as
+CFLAGS= -I$(ROOT)/include -Wall $(EXTRA)
+LDDIR=-L$(ROOT)/lib
+LDLIBS=$(LDDIR) -lq $(EXTRALIBS)
+LIBQ=$(ROOT)/lib/libq.a
+TEMPFILES=core core.* *.o temp.* *.out
