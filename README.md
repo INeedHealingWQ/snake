@@ -1,2 +1,2 @@
 # snake
-a simple snake game for linux framebuffer
+a simple snake game based on linux framebuffer
